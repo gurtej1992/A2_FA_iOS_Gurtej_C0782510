@@ -58,6 +58,7 @@ class Helper: NSObject {
             
         }
     }
+    
 }
 // Took refrence from internet.
 extension UIViewController {

@@ -16,12 +16,17 @@ class ShowProductVC: UIViewController {
     var product : Products?
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         if let product = product{
             txtID.text = product.productID
             txtPPrice.text = product.productPrice
             txtPProvider.text = product.providers?.providerName
             txtPDesc.text = product.productDesc
             txtPName.text = product.productName
+            self.title = "Show Products"
+        }
+        else{
+            self.title = "Add Product"
         }
         
     }

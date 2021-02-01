@@ -12,6 +12,7 @@ class ProviderDetailVC: UITableViewController {
     var products : [Products]?
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Product Details"
         if let _ = provider{
             products = Helper.getProductsWithPredicate(predicate: NSPredicate(format: "providers.providerName = %@",provider!.providerName!))
         }

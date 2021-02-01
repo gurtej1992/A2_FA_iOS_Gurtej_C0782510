@@ -3,7 +3,6 @@
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dpJ-cg-FXM">
-                                <rect key="frame" x="0.0" y="100" width="414" height="586"/>
+                                <rect key="frame" x="0.0" y="145" width="414" height="591"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" textLabel="Vzn-hT-n6k" detailTextLabel="St7-Nj-eWy" style="IBUITableViewCellStyleSubtitle" id="AoL-Mm-Cy1">
@@ -53,24 +52,28 @@
                             </tableView>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="XMu-Pa-tqn">
                                 <rect key="frame" x="0.0" y="44" width="414" height="56"/>
+                                <color key="backgroundColor" systemColor="systemTealColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="TaC-vd-973"/>
                                 </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="barTintColor" systemColor="systemTealColor"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="Iyf-SH-3Mf"/>
                                 </connections>
                             </searchBar>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="sIX-GR-Qd2">
-                                <rect key="frame" x="0.0" y="686" width="414" height="51"/>
-                                <color key="backgroundColor" name="AccentColor"/>
+                                <rect key="frame" x="0.0" y="100" width="414" height="46"/>
+                                <color key="backgroundColor" systemColor="systemTealColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="Vc4-cu-hih"/>
+                                    <constraint firstAttribute="height" constant="45" id="N8o-AC-p3X"/>
                                 </constraints>
                                 <segments>
                                     <segment title="Product"/>
                                     <segment title="Provider"/>
                                 </segments>
+                                <color key="tintColor" red="0.88888439119999996" green="0.88888439119999996" blue="0.88888439119999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="handleSegChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="eIa-k4-xYr"/>
                                 </connections>
@@ -80,24 +83,26 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="XMu-Pa-tqn" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="04H-JN-TVp"/>
-                            <constraint firstItem="sIX-GR-Qd2" firstAttribute="top" secondItem="dpJ-cg-FXM" secondAttribute="bottom" id="3zl-Ke-lmD"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sIX-GR-Qd2" secondAttribute="trailing" id="PsG-MJ-hC5"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="sIX-GR-Qd2" secondAttribute="bottom" id="SlO-Wf-Deo"/>
-                            <constraint firstItem="dpJ-cg-FXM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="eBW-bS-HFC"/>
-                            <constraint firstItem="sIX-GR-Qd2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="lZJ-w7-bK9"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="dpJ-cg-FXM" secondAttribute="bottom" id="GuR-G6-nNB"/>
+                            <constraint firstItem="sIX-GR-Qd2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="M5F-HI-9G4"/>
+                            <constraint firstItem="sIX-GR-Qd2" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="ZDW-PH-q20"/>
+                            <constraint firstItem="dpJ-cg-FXM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="b2t-cd-Dsk"/>
+                            <constraint firstItem="dpJ-cg-FXM" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="eSV-qI-FiB"/>
+                            <constraint firstItem="dpJ-cg-FXM" firstAttribute="top" secondItem="sIX-GR-Qd2" secondAttribute="bottom" id="fdf-jZ-A9l"/>
+                            <constraint firstItem="sIX-GR-Qd2" firstAttribute="top" secondItem="XMu-Pa-tqn" secondAttribute="bottom" id="jyl-gz-WdY"/>
                             <constraint firstItem="XMu-Pa-tqn" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="oDI-T3-zmV"/>
                             <constraint firstItem="XMu-Pa-tqn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="oIb-nu-SC9"/>
-                            <constraint firstItem="dpJ-cg-FXM" firstAttribute="top" secondItem="XMu-Pa-tqn" secondAttribute="bottom" id="sP9-Og-NYq"/>
-                            <constraint firstItem="dpJ-cg-FXM" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="x1C-8C-J8f"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="q9S-Z6-F58">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="magnifyingglass" catalog="system" id="aMi-gG-C45">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="handleSearch:" destination="BYZ-38-t0r" id="pK8-AO-XdF"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="LMx-Qj-KJX">
+                        <barButtonItem key="rightBarButtonItem" image="square.and.pencil" catalog="system" id="LMx-Qj-KJX">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="handleAdd:" destination="BYZ-38-t0r" id="xol-14-OAK"/>
                             </connections>
@@ -153,10 +158,13 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Q3-lP-qnS">
-                                <rect key="frame" x="0.0" y="686" width="414" height="50"/>
+                                <rect key="frame" x="0.0" y="676" width="414" height="60"/>
+                                <color key="backgroundColor" systemColor="systemTealColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="hdM-o4-a0g"/>
+                                    <constraint firstAttribute="height" constant="60" id="hdM-o4-a0g"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Submit"/>
                                 <connections>
                                     <action selector="handleAdd:" destination="g8P-Rg-6oM" eventType="touchUpInside" id="fBn-wq-BcK"/>
@@ -238,6 +246,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jge-Hn-8sn">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" systemColor="systemTealColor"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -251,11 +260,12 @@
     </scenes>
     <resources>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
-        <namedColor name="AccentColor">
-            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
+        <image name="square.and.pencil" catalog="system" width="128" height="115"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

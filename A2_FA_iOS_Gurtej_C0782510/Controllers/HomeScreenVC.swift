@@ -22,28 +22,35 @@ class HomeScreenVC: UIViewController {
         super.viewDidLoad()
         searchBarHeight.constant = 0
         fetchAddData()
+        self.title = "Products"
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        handleSegChanged(selectSeg)
+    }
+    
+    @IBAction func handleSegChanged(_ sender: UISegmentedControl) {
+        fetchFromCoreData(for: sender.selectedSegmentIndex == 0 ? .product : .provider)
+        
+    }
+    // Fetch Products or Providers from Coredata
     func fetchFromCoreData(for type : fetchType){
         if type == .product{
             if let result = Helper.getProducts(){
                 arrProducts  = result
+                self.title = "Products"
             }
         }
         else{
             if let result = Helper.getProviders(){
                 arrProviders  = result
+                self.title = "Providers"
             }
             
         }
         homeTV.reloadData()
     }
-    override func viewWillAppear(_ animated: Bool) {
-        handleSegChanged(selectSeg)
-    }
-    @IBAction func handleSegChanged(_ sender: UISegmentedControl) {
-        fetchFromCoreData(for: sender.selectedSegmentIndex == 0 ? .product : .provider)
-        
-    }
+    //First Run
     func fetchAddData(){
         if let result = Helper.getProducts(){
             arrProducts  = result
@@ -124,19 +131,33 @@ class HomeScreenVC: UIViewController {
         else{
             searchBarHeight.constant = 0
         }
+        UIView.animate(withDuration:   0.5, animations: {
+            self.view.layoutIfNeeded()
+        })
     }
+    
+    
+        
+    
     
 }
 extension HomeScreenVC : UISearchBarDelegate{
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText != "" {
+            if selectSeg.selectedSegmentIndex == 0 {
+                arrProducts = arrProducts.filter({
+                    return ($0.productName!.lowercased().contains(searchText.lowercased())) || ($0.productDesc!.lowercased().contains(searchText.lowercased()))
+                })
+            }
+            else{
+                arrProviders = arrProviders.filter({
+                    return ($0.providerName!.lowercased().contains(searchText.lowercased()))
+                })
+            }
             
-            arrProducts = arrProducts.filter({
-                return ($0.productName!.lowercased().contains(searchText.lowercased())) || ($0.productDesc!.lowercased().contains(searchText.lowercased()))
-            })
         }
         else{
-            fetchAddData()
+            self.fetchFromCoreData(for: self.selectSeg.selectedSegmentIndex == 0 ? .product : .provider)
         }
         homeTV.reloadData()
     }
@@ -177,23 +198,32 @@ extension HomeScreenVC : UITableViewDelegate , UITableViewDataSource{
         }
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete{
-            if selectSeg.selectedSegmentIndex == 0{
-                let objc = arrProducts[indexPath.row]
-                Helper.context.delete(objc)
-                Helper.saveDataToCoreData()
-            }
-            else{
-                for product in arrProducts{
-                    if product.providers?.providerName == arrProviders[indexPath.row].providerName{
-                        Helper.context.delete(product)
-                    }
+        let alert = UIAlertController(title: "Warning", message: "You are about to delete this, Are you sure.", preferredStyle: UIAlertController.Style.alert)
+
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+            if editingStyle == .delete{
+                if self.selectSeg.selectedSegmentIndex == 0{
+                    let objc = self.arrProducts[indexPath.row]
+                    Helper.context.delete(objc)
+                    Helper.saveDataToCoreData()
                 }
-                Helper.context.delete(arrProviders[indexPath.row])
-                Helper.saveDataToCoreData()
-                
+                else{
+                    for product in self.arrProducts{
+                        if product.providers?.providerName == self.arrProviders[indexPath.row].providerName{
+                            Helper.context.delete(product)
+                        }
+                    }
+                    Helper.context.delete(self.arrProviders[indexPath.row])
+                    Helper.saveDataToCoreData()
+                    
+                }
+                self.fetchFromCoreData(for: self.selectSeg.selectedSegmentIndex == 0 ? .product : .provider)
             }
-            fetchFromCoreData(for: selectSeg.selectedSegmentIndex == 0 ? .product : .provider)
-        }
+        }))
+
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+
+        present(alert, animated: true, completion: nil)
+        
     }
 }
