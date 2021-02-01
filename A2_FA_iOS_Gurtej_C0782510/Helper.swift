@@ -29,7 +29,17 @@ class Helper: NSObject {
             return nil
         }
     }
-    
+    static func getProductsWithPredicate(predicate : NSPredicate) -> [Products]?{
+        var product = [Products]()
+        let req : NSFetchRequest<Products> = Products.fetchRequest()
+        req.predicate = predicate
+        do {
+            product =  try context.fetch(req)
+        } catch  {
+            return nil
+        }
+        return product.count == 0 ? nil : product
+    }
     static func saveDataToCoreData(){
         do {
             try context.save()
