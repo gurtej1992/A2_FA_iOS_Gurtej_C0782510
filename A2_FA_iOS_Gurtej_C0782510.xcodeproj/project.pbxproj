@@ -9,23 +9,25 @@
 /* Begin PBXBuildFile section */
 		B70F87B025C821B9008EDC31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70F87AF25C821B9008EDC31 /* AppDelegate.swift */; };
 		B70F87B225C821B9008EDC31 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70F87B125C821B9008EDC31 /* SceneDelegate.swift */; };
-		B70F87B425C821B9008EDC31 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70F87B325C821B9008EDC31 /* ViewController.swift */; };
 		B70F87B725C821B9008EDC31 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B70F87B525C821B9008EDC31 /* Main.storyboard */; };
 		B70F87BA25C821B9008EDC31 /* A2_FA_iOS_Gurtej_C0782510.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B70F87B825C821B9008EDC31 /* A2_FA_iOS_Gurtej_C0782510.xcdatamodeld */; };
 		B70F87BC25C821C1008EDC31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B70F87BB25C821C1008EDC31 /* Assets.xcassets */; };
 		B70F87BF25C821C1008EDC31 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B70F87BD25C821C1008EDC31 /* LaunchScreen.storyboard */; };
+		B70F87CA25C82337008EDC31 /* HomeScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70F87C925C82337008EDC31 /* HomeScreenVC.swift */; };
+		B70F87CD25C82ABE008EDC31 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70F87CC25C82ABE008EDC31 /* Helper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		B70F87AC25C821B9008EDC31 /* A2_FA_iOS_Gurtej_C0782510.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = A2_FA_iOS_Gurtej_C0782510.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B70F87AF25C821B9008EDC31 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B70F87B125C821B9008EDC31 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B70F87B325C821B9008EDC31 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B70F87B625C821B9008EDC31 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B70F87B925C821B9008EDC31 /* A2_FA_iOS_Gurtej_C0782510.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = A2_FA_iOS_Gurtej_C0782510.xcdatamodel; sourceTree = "<group>"; };
 		B70F87BB25C821C1008EDC31 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B70F87BE25C821C1008EDC31 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B70F87C025C821C1008EDC31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B70F87C925C82337008EDC31 /* HomeScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenVC.swift; sourceTree = "<group>"; };
+		B70F87CC25C82ABE008EDC31 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,16 +60,41 @@
 		B70F87AE25C821B9008EDC31 /* A2_FA_iOS_Gurtej_C0782510 */ = {
 			isa = PBXGroup;
 			children = (
-				B70F87AF25C821B9008EDC31 /* AppDelegate.swift */,
-				B70F87B125C821B9008EDC31 /* SceneDelegate.swift */,
-				B70F87B325C821B9008EDC31 /* ViewController.swift */,
+				B70F87CF25C82AC5008EDC31 /* Delegates */,
 				B70F87B525C821B9008EDC31 /* Main.storyboard */,
 				B70F87BB25C821C1008EDC31 /* Assets.xcassets */,
 				B70F87BD25C821C1008EDC31 /* LaunchScreen.storyboard */,
 				B70F87C025C821C1008EDC31 /* Info.plist */,
-				B70F87B825C821B9008EDC31 /* A2_FA_iOS_Gurtej_C0782510.xcdatamodeld */,
+				B70F87D125C82AE4008EDC31 /* Model */,
+				B70F87D225C82AF1008EDC31 /* Controllers */,
+				B70F87CC25C82ABE008EDC31 /* Helper.swift */,
 			);
 			path = A2_FA_iOS_Gurtej_C0782510;
+			sourceTree = "<group>";
+		};
+		B70F87CF25C82AC5008EDC31 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				B70F87AF25C821B9008EDC31 /* AppDelegate.swift */,
+				B70F87B125C821B9008EDC31 /* SceneDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		B70F87D125C82AE4008EDC31 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B70F87B825C821B9008EDC31 /* A2_FA_iOS_Gurtej_C0782510.xcdatamodeld */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B70F87D225C82AF1008EDC31 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B70F87C925C82337008EDC31 /* HomeScreenVC.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,10 +167,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B70F87B425C821B9008EDC31 /* ViewController.swift in Sources */,
 				B70F87B025C821B9008EDC31 /* AppDelegate.swift in Sources */,
 				B70F87BA25C821B9008EDC31 /* A2_FA_iOS_Gurtej_C0782510.xcdatamodeld in Sources */,
+				B70F87CD25C82ABE008EDC31 /* Helper.swift in Sources */,
 				B70F87B225C821B9008EDC31 /* SceneDelegate.swift in Sources */,
+				B70F87CA25C82337008EDC31 /* HomeScreenVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,7 +328,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tej.A2-FA-iOS-Gurtej-C0782510";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -319,7 +347,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tej.A2-FA-iOS-Gurtej-C0782510";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
