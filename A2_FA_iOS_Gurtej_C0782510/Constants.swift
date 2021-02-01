@@ -8,5 +8,7 @@
 import UIKit
 
 class Constants: NSObject {
-
+    static let HomeScreenVC = "HomeScreenVC"
+    static let ShowProductVC = "ShowProductVC"
+    static let ProviderDetailVC = "ProviderDetailVC"
 }

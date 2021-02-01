@@ -3,6 +3,7 @@
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -50,17 +51,6 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="E8v-tI-a69"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xjb-IC-LNp">
-                                <rect key="frame" x="264" y="586" width="100" height="100"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="kyY-Pv-L2W"/>
-                                    <constraint firstAttribute="width" constant="100" id="xur-Ka-HZd"/>
-                                </constraints>
-                                <state key="normal" title="Add"/>
-                                <connections>
-                                    <action selector="handleAdd:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gSA-58-6Kk"/>
-                                </connections>
-                            </button>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="XMu-Pa-tqn">
                                 <rect key="frame" x="0.0" y="44" width="414" height="56"/>
                                 <constraints>
@@ -73,6 +63,10 @@
                             </searchBar>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="sIX-GR-Qd2">
                                 <rect key="frame" x="0.0" y="686" width="414" height="51"/>
+                                <color key="backgroundColor" name="AccentColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Vc4-cu-hih"/>
+                                </constraints>
                                 <segments>
                                     <segment title="Product"/>
                                     <segment title="Provider"/>
@@ -87,15 +81,12 @@
                         <constraints>
                             <constraint firstItem="XMu-Pa-tqn" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="04H-JN-TVp"/>
                             <constraint firstItem="sIX-GR-Qd2" firstAttribute="top" secondItem="dpJ-cg-FXM" secondAttribute="bottom" id="3zl-Ke-lmD"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Xjb-IC-LNp" secondAttribute="bottom" constant="50" id="GrT-R7-ZaG"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sIX-GR-Qd2" secondAttribute="trailing" id="PsG-MJ-hC5"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="sIX-GR-Qd2" secondAttribute="bottom" id="SlO-Wf-Deo"/>
                             <constraint firstItem="dpJ-cg-FXM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="eBW-bS-HFC"/>
                             <constraint firstItem="sIX-GR-Qd2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="lZJ-w7-bK9"/>
-                            <constraint firstItem="sIX-GR-Qd2" firstAttribute="top" secondItem="Xjb-IC-LNp" secondAttribute="bottom" id="nqQ-nw-kGb"/>
                             <constraint firstItem="XMu-Pa-tqn" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="oDI-T3-zmV"/>
                             <constraint firstItem="XMu-Pa-tqn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="oIb-nu-SC9"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Xjb-IC-LNp" secondAttribute="trailing" constant="50" id="oge-vS-nx4"/>
                             <constraint firstItem="dpJ-cg-FXM" firstAttribute="top" secondItem="XMu-Pa-tqn" secondAttribute="bottom" id="sP9-Og-NYq"/>
                             <constraint firstItem="dpJ-cg-FXM" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="x1C-8C-J8f"/>
                         </constraints>
@@ -104,6 +95,11 @@
                         <barButtonItem key="leftBarButtonItem" title="Item" image="magnifyingglass" catalog="system" id="aMi-gG-C45">
                             <connections>
                                 <action selector="handleSearch:" destination="BYZ-38-t0r" id="pK8-AO-XdF"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="LMx-Qj-KJX">
+                            <connections>
+                                <action selector="handleAdd:" destination="BYZ-38-t0r" id="xol-14-OAK"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -255,6 +251,9 @@
     </scenes>
     <resources>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

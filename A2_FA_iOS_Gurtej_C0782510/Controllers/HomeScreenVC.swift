@@ -33,9 +33,12 @@ class HomeScreenVC: UIViewController {
             if let result = Helper.getProviders(){
                 arrProviders  = result
             }
-
+            
         }
         homeTV.reloadData()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        handleSegChanged(selectSeg)
     }
     @IBAction func handleSegChanged(_ sender: UISegmentedControl) {
         fetchFromCoreData(for: sender.selectedSegmentIndex == 0 ? .product : .provider)
@@ -59,7 +62,7 @@ class HomeScreenVC: UIViewController {
                     product.productPrice = "$\(product.productID!)"
                     provider.providerName = "Apple"
                     product.providers = provider
-    
+                    
                 }
                 else if i > 3 && i < 7{
                     let product = Products(context: Helper.context)
@@ -88,7 +91,30 @@ class HomeScreenVC: UIViewController {
         homeTV.reloadData()
     }
     @IBAction func handleAdd(_ sender: Any) {
-        
+        if selectSeg.selectedSegmentIndex == 0 {
+            let vc = storyboard?.instantiateViewController(identifier: Constants.ShowProductVC) as! ShowProductVC
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        else{
+            showInputDialog(title: "Add New Provider",
+                            actionTitle: "Add",
+                            cancelTitle: "Cancel",
+                            inputPlaceholder: "Provider",
+                            inputKeyboardType: .default, actionHandler:
+                                { [self] (input:String?) in
+                                    let req : NSFetchRequest<Providers> = Providers.fetchRequest()
+                                    req.predicate = NSPredicate(format: "providerName = '\(input!)'")
+                                    let storeProvider = try! Helper.context.fetch(req)
+                                    if storeProvider.count == 0{
+                                        let provider = Providers(context: Helper.context)
+                                        provider.providerName = input
+                                    }
+                                    Helper.saveDataToCoreData()
+                                    fetchFromCoreData(for: .provider)
+                                    
+                                })
+            
+        }
     }
     //MARK:-  Search Bar Handle
     @IBAction func handleSearch(_ sender: Any) {
@@ -136,17 +162,38 @@ extension HomeScreenVC : UITableViewDelegate , UITableViewDataSource{
                 cell.detailTextLabel?.text = String(0)
             }
         }
-       
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if selectSeg.selectedSegmentIndex == 0 {
-            let vc = storyboard?.instantiateViewController(identifier: "")
+            let vc = storyboard?.instantiateViewController(identifier: Constants.ShowProductVC) as! ShowProductVC
+            vc.product = arrProducts[indexPath.row]
+            self.navigationController?.pushViewController(vc, animated: true)
         }
         else{
-            
+            let vc = storyboard?.instantiateViewController(identifier: Constants.ProviderDetailVC) as! ProviderDetailVC
+            vc.provider = arrProviders[indexPath.row]
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
-    
-    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete{
+            if selectSeg.selectedSegmentIndex == 0{
+                let objc = arrProducts[indexPath.row]
+                Helper.context.delete(objc)
+                Helper.saveDataToCoreData()
+            }
+            else{
+                for product in arrProducts{
+                    if product.providers?.providerName == arrProviders[indexPath.row].providerName{
+                        Helper.context.delete(product)
+                    }
+                }
+                Helper.context.delete(arrProviders[indexPath.row])
+                Helper.saveDataToCoreData()
+                
+            }
+            fetchFromCoreData(for: selectSeg.selectedSegmentIndex == 0 ? .product : .provider)
+        }
+    }
 }

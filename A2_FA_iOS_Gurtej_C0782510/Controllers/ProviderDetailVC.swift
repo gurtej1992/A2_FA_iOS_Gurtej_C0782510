@@ -8,18 +8,22 @@
 import UIKit
 
 class ProviderDetailVC: UITableViewController {
-
+    var provider : Providers!
+    var products : [Products]?
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        if let _ = provider{
+            products = Helper.getProductsWithPredicate(predicate: NSPredicate(format: "providers.providerName = %@",provider!.providerName!))
+        }
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return products?.count ?? 0
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell =  tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = products?[indexPath.row].productName
+        cell.detailTextLabel?.text = products?[indexPath.row].productDesc
         return cell
         
     }
